@@ -483,7 +483,7 @@
   
   // Controllers
   
-  var eventSplitter = /^(\w+)\s*(.*)$/;
+  var eventSplitter = /^([^\s]+)\s*(.*)$/;
   
   var Controller = Spine.Controller = Class.create({
     tag: "div",

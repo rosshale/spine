@@ -71,7 +71,20 @@ describe("Controller", function(){
       element.click();
       expect(spy).toHaveBeenCalled();
     });
-  
+
+    it("can add namespaced events", function(){
+      Users.include({
+        events: {"slick:rick": "wasClicked"},
+
+        // Context change confuses Spy
+        wasClicked: $.proxy(spy, jasmine)
+      });
+
+      var users = Users.init({el: element});
+      element.trigger("slick:rick");
+      expect(spy).toHaveBeenCalled();
+    });
+
     it("can delegate events", function(){
       Users.include({
         events: {"click .foo": "wasClicked"},
